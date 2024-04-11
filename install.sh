@@ -11,4 +11,5 @@ ln -sf "$(pwd)"/hypridle.conf "$HOME"/.dotfiles/hypridle.conf
 ln -sf "$(pwd)"/vars.conf "$HOME"/.dotfiles/vars.conf
 ln -sf "$(pwd)"/hyprland.conf "$HOME"/.config/hypr/hyprland.conf
 ln -sf "$(pwd)"/hyprlock.conf "$HOME"/.config/hypr/hyprlock.conf
+ln -sf "$(pwd)"/kitty.conf "$HOME"/.config/kitty/kitty.conf
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
