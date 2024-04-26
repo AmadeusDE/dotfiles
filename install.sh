@@ -14,3 +14,4 @@ ln -sf "$(pwd)"/hyprlock.conf "$HOME"/.config/hypr/hyprlock.conf
 ln -sf "$(pwd)"/kitty.conf "$HOME"/.config/kitty/kitty.conf
 ln -sf "$(pwd)"/conky.conf "$HOME"/.config/conky/conky.conf
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
+cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
