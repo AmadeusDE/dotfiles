@@ -1,3 +1,4 @@
 add htop/btop do keybinds
 add vscodium to keybinds
 add firefox to keybinds
+don't run g with -A with low column size

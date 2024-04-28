@@ -24,6 +24,7 @@ ln -sf "$(realpath hyprlock.conf)" "$HOME"/.config/hypr/hyprlock.conf
 ln -sf "$(realpath kitty.conf)" "$HOME"/.config/kitty/kitty.conf
 ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
 ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
+ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
 cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
