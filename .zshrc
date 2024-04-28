@@ -110,13 +110,34 @@ bindkey -M emacs '^[^[[3~' fuck-command-line
 bindkey -M vicmd '^[^[[3~' fuck-command-line
 bindkey -M viins '^[^[[3~' fuck-command-line
 
+#Functions
+function ls {
+  if [ $(tput lines) -gt 30 ]
+  then
+	if [ $(tput cols) -gt 100 ]
+      then
+	    /bin/g -A -l --table --table-style=unicode --hide-git-ignore
+      else
+	    /bin/g -A --table --table-style=unicode --hide-git-ignore
+    fi
+  else
+    /bin/g -A --hide-git-ignore
+  fi
+}
+
+function tree {
+  if [ $(tput cols) -gt 100 ]
+    then
+      /bin/g -A -l --tree --hide-git-ignore
+    else
+      /bin/g -A --tree --hide-git-ignore
+  fi
+}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias ls="/bin/g -A -l --table --table-style=unicode --hide-git-ignore"
-alias tree="/bin/g -A -l --tree --hide-git-ignore"
 alias g="lazygit"
 alias e="$EDITOR"
 alias c="clear"
