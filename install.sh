@@ -7,6 +7,7 @@ shellcheck "$(realpath "$0")"
 sudo chown root "$(realpath doas.conf)"
 sudo ln -sf "$(realpath doas.conf)" /etc/doas.conf
 yay -Syu $(tr "\n" " " < aurpackages)
+flatpak install $(tr "\n" " " < flats)
 doas pacman -Rns sudo
 doas pacman -Syu doas-sudo-shim
 doas usermod --shell /bin/zsh "$USER"
@@ -25,6 +26,7 @@ ln -sf "$(realpath kitty.conf)" "$HOME"/.config/kitty/kitty.conf
 ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
 ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
+ln -sf "$(realpath fastfetch.jsonc)" "$HOME"/.config/fastfetch/config.jsonc
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
 cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
