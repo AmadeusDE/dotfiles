@@ -27,6 +27,8 @@ ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
 ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 ln -sf "$(realpath fastfetch.jsonc)" "$HOME"/.config/fastfetch/config.jsonc
+doas cp -r "$(realpath simplicity-sddm-theme/simplicity)" /usr/share/sddm/themes/simplicity
+doas cp "$(realpath sddm-theme.conf)" /usr/share/sddm/themes/simplicity/theme.conf.user
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
 cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -80,7 +80,7 @@ VSCODE=codium
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(archlinux git vscode gradle golang git-commit zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting thefuck sudo)
+plugins=(archlinux git vscode gradle golang git-commit zsh-autosuggestions zsh-syntax-highlighting thefuck sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,6 +132,14 @@ function tree {
     else
       /bin/g -A --tree --hide-git-ignore
   fi
+}
+
+function what {
+  tldr $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ')
+}
+
+function woman {
+  man $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ')
 }
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,

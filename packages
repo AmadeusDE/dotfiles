@@ -20,7 +20,7 @@ hyprlock
 hyprpaper
 kdeconnect
 kitty
-lazygit
+lazygitzsh-autocomplete
 lutris
 micro
 obs-studio-tytan652
@@ -41,6 +41,7 @@ shellcheck
 slurp
 swappy
 thefuck
+tldr
 vscodium
 wireplumber
 wlrobs-hg
