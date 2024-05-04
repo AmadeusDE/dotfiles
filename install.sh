@@ -28,7 +28,10 @@ ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 ln -sf "$(realpath fastfetch.jsonc)" "$HOME"/.config/fastfetch/config.jsonc
 doas cp -r "$(realpath simplicity-sddm-theme/simplicity)" /usr/share/sddm/themes/simplicity
-doas cp "$(realpath sddm-theme.conf)" /usr/share/sddm/themes/simplicity/theme.conf.user
+doas cp "$(realpath sddm-theme.conf)" /usr/share/sddm/themes/simplicity/theme.conf
+curl https://i.redd.it/u4ke5ih893x61.png > lock.png
+doas cp "$(realpath lock.png)" /usr/share/sddm/themes/simplicity/lock.png
+rm lock.png
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
 cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
