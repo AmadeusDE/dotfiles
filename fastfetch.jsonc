@@ -50,11 +50,6 @@
         "keyColor": "bright_yellow"
     },
     {
-        "type": "brightness",
-        "key": " 󰃞 ",
-        "keyColor": "bright_yellow"
-    },
-    {
         "type": "battery",
         "key": "  ",
         "keyColor": "bright_white"
@@ -129,16 +124,6 @@
         "type": "uptime",
         "key": " 󰅐 ",
         "keyColor": "green"
-    },
-    {
-      "type": "player",
-      "key": " 󰥠 ",
-      "keyColor": "blue"
-    },
-    {
-        "type": "media",
-        "key": " 󰝚 ",
-        "keyColor": "blue"
     },
     {
         "type": "localip",

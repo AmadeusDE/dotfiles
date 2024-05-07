@@ -1,3 +1,6 @@
 [submodule "simplicity-sddm-theme"]
 	path = simplicity-sddm-theme
 	url = https://gitlab.com/isseigx/simplicity-sddm-theme
+[submodule "kitty-pistol-previewer"]
+	path = kitty-pistol-previewer
+	url = git@github.com:duganchen/kitty-pistol-previewer.git

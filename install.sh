@@ -8,8 +8,9 @@ sudo chown root "$(realpath doas.conf)"
 sudo ln -sf "$(realpath doas.conf)" /etc/doas.conf
 yay -Syu $(tr "\n" " " < aurpackages)
 flatpak install $(tr "\n" " " < flats)
-doas pacman -Rns sudo
+doas pacman -Rns $(tr "\n" " " < rmpackages)
 doas pacman -Syu doas-sudo-shim
+doas grub-mkconfig -o /boot/grub/grub.cfg
 doas usermod --shell /bin/zsh "$USER"
 echo "After this you'll be asked what version to downgrade bluez too, if you want bluetooth to work use 5.68, press any key to continue"
 #intentional dummy and -r doesn't matter because the var is never used
@@ -27,6 +28,11 @@ ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
 ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 ln -sf "$(realpath fastfetch.jsonc)" "$HOME"/.config/fastfetch/config.jsonc
+mkdir -p "$HOME"/.config/lf
+ln -sf "$(realpath lf/lfrc)" "$HOME"/.config/lf/lfrc
+ln -sf "$(realpath lf/kitty_clean)" "$HOME"/.config/lf/kitty_clean
+ln -sf "$(realpath lf/kitty_preview)" "$HOME"/.config/lf/kitty_preview
+cp -r "$(realpath kitty-pistol-previewer/vidthumb)" "$HOME"/.config/lf/vidthumb
 doas cp -r "$(realpath simplicity-sddm-theme/simplicity)" /usr/share/sddm/themes/simplicity
 doas cp "$(realpath sddm-theme.conf)" /usr/share/sddm/themes/simplicity/theme.conf
 curl https://i.redd.it/u4ke5ih893x61.png > lock.png

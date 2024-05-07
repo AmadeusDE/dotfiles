@@ -11,6 +11,8 @@ dolphin
 downgrade
 dunst
 fastfetch
+ffmpeg
+ffmpegthumbnailer
 flatpak
 gamescope
 grim
@@ -18,9 +20,13 @@ hypridle
 hyprland
 hyprlock
 hyprpaper
+jq
 kdeconnect
 kitty
 lazygitzsh-autocomplete
+lf
+linux-zen
+linux-zen-headers
 lutris
 micro
 obs-studio-tytan652
