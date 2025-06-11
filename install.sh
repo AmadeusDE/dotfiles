@@ -1,13 +1,18 @@
 #!/bin/sh
 
+#fixes shellcheck thinking i want to disable SC2046 for the entire file
+echo
 #intentional splitting
 # shellcheck disable=SC2046
 sudo pacman -Syu $(tr "\n" " " < packages)
 shellcheck "$(realpath "$0")"
 sudo chown root "$(realpath doas.conf)"
 sudo ln -sf "$(realpath doas.conf)" /etc/doas.conf
+# shellcheck disable=SC2046
 yay -Syu $(tr "\n" " " < aurpackages)
+# shellcheck disable=SC2046
 flatpak install $(tr "\n" " " < flats)
+# shellcheck disable=SC2046
 doas pacman -Rns $(tr "\n" " " < rmpackages)
 doas pacman -Syu doas-sudo-shim
 doas usermod --shell /bin/zsh "$USER"
@@ -18,8 +23,14 @@ echo "After this you'll be asked what version to downgrade bluez too, if you wan
 # shellcheck disable=SC2034,SC2162
 read dummy
 doas downgrade bluez bluez-libs
+# shellcheck disable=SC2046
+while [ $(pacman -Qtdg) ]; do pacman -Qtdq | xargs doas pacman -Rns --noconfirm; done
+doas pacman -Scc
 mkdir -p "$HOME"/.dotfiles/
 ln -sf "$(realpath wallpaper.sh)" "$HOME"/.dotfiles/wallpaper.sh
+ln -sf "$(realpath screenshot.sh)" "$HOME"/.dotfiles/screenshot.sh
+ln -sf "$(realpath selectshot.sh)" "$HOME"/.dotfiles/selectshot.sh
+ln -sf "$(realpath windowshot.sh)" "$HOME"/.dotfiles/windowshot.sh
 ln -sf "$(realpath autostart.conf)" "$HOME"/.dotfiles/autostart.conf
 ln -sf "$(realpath hypridle.conf)" "$HOME"/.dotfiles/hypridle.conf
 ln -sf "$(realpath vars.conf)" "$HOME"/.dotfiles/vars.conf
@@ -30,7 +41,7 @@ mkdir -p "$HOME"/.config/kitty
 ln -sf "$(realpath kitty.conf)" "$HOME"/.config/kitty/kitty.conf
 mkdir -p "$HOME"/.config/conky
 ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
-mkdir -p "$HOME"/.config/btio
+mkdir -p "$HOME"/.config/btop
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 mkdir -p "$HOME"/.config/fastfetch
 ln -sf "$(realpath fastfetch.jsonc)" "$HOME"/.config/fastfetch/config.jsonc
@@ -58,3 +69,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # shellcheck disable=SC2086
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+echo "Install complete, you should run"
+echo "\"doas pacman -Syu lib32-vulkan-intel vulkan-intel\", for intel"
+echo "\"doas pacman -Syu lib32-vulkan-radeon vulkan-radeon\", for amd"
+echo "\"doas pacman -Syu lib32-nvidia-utils nvidia-utils\", for nvidia"
+echo "press any key to continue"
+#intentional dummy and -r doesn't matter because the var is never used
+# shellcheck disable=SC2034,SC2162
+read dummy
