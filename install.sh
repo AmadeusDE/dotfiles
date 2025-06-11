@@ -11,6 +11,7 @@ flatpak install $(tr "\n" " " < flats)
 doas pacman -Rns $(tr "\n" " " < rmpackages)
 doas pacman -Syu doas-sudo-shim
 doas usermod --shell /bin/zsh "$USER"
+systemctl --use  enable pipewire pipewire-pulse wireplumber
 doas systemctl enable sddm.service
 echo "After this you'll be asked what version to downgrade bluez too, if you want bluetooth to work use 5.68, press any key to continue"
 #intentional dummy and -r doesn't matter because the var is never used
