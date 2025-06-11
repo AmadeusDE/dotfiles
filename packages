@@ -23,12 +23,18 @@ kdeconnect
 kitty
 lazygit
 lf
+lib32-alsa-plugins
+lib32-libpulse
+lib32-openal
+lib32-vulkan-icd-loader
 linux-zen
 linux-zen-headers
 lutris
 mandoc
 micro
 mpvpaper
+nerd-fonts
+nvtop
 obs-studio-tytan652
 packagekit-qt6
 pipewire
@@ -54,5 +60,6 @@ wireplumber
 wlrobs-hg
 wofi
 xdg-desktop-portal-hyprland
+wl-clipboard
 yay
 zsh
