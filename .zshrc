@@ -116,30 +116,50 @@ function ls {
   then
 	if [ $(tput cols) -gt 100 ]
       then
-	    /bin/g -A -l --table --table-style=unicode
+	    /bin/g -A -l --table --table-style=unicode $*
       else
-	    /bin/g -A --table --table-style=unicode
+	    /bin/g -A --table --table-style=unicode $*
     fi
   else
-    /bin/g -A --hide-git-ignore
+    /bin/g -A $*
   fi
+}
+
+function lc {
+  /bin/g -A --hide-git-ignore $*
+}
+
+function l1 {
+  /bin/g -1 -A --hide-git-ignore $*
 }
 
 function tree {
   if [ $(tput cols) -gt 100 ]
     then
-      /bin/g -A -l --tree
+      /bin/g -A -l --tree $*
     else
-      /bin/g -A --tree
+      /bin/g -A --tree $*
   fi
 }
 
 function what {
-  tldr $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ')
+  tldr $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ') $*
 }
 
 function woman {
-  man $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ')
+  man $(history | tail -1 | cut -c8- | cut -d ' ' -f1 | tr '\n' ' ') $*
+}
+
+function upgrade {
+  pacman -Syu --noconfirm
+  flatpak upgrade
+  omz update
+}
+
+function full-upgrade {
+  yay -Syu --noconfirm
+  flatpak upgrade
+  omz update
 }
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
