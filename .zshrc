@@ -116,9 +116,9 @@ function ls {
   then
 	if [ $(tput cols) -gt 100 ]
       then
-	    /bin/g -A -l --table --table-style=unicode --hide-git-ignore
+	    /bin/g -A -l --table --table-style=unicode
       else
-	    /bin/g -A --table --table-style=unicode --hide-git-ignore
+	    /bin/g -A --table --table-style=unicode
     fi
   else
     /bin/g -A --hide-git-ignore
@@ -128,9 +128,9 @@ function ls {
 function tree {
   if [ $(tput cols) -gt 100 ]
     then
-      /bin/g -A -l --tree --hide-git-ignore
+      /bin/g -A -l --tree
     else
-      /bin/g -A --tree --hide-git-ignore
+      /bin/g -A --tree
   fi
 }
 

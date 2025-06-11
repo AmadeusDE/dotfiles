@@ -1,6 +1,5 @@
 bluez
 bluez-libs
-bluez-openrc
 conky
 curl
 dash
@@ -11,7 +10,6 @@ dolphin
 downgrade
 dunst
 fastfetch
-ffmpeg
 ffmpegthumbnailer
 flatpak
 gamescope
@@ -19,7 +17,7 @@ grim
 hypridle
 hyprland
 hyprlock
-hyprpaper
+imagemagick
 jq
 kdeconnect
 kitty
@@ -29,6 +27,7 @@ linux-zen
 linux-zen-headers
 lutris
 micro
+mpvpaper
 obs-studio-tytan652
 packagekit-qt6
 pipewire
@@ -48,6 +47,7 @@ slurp
 swappy
 thefuck
 tldr
+vesktop
 vscodium
 wireplumber
 wlrobs-hg

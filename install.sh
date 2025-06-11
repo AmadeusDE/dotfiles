@@ -10,8 +10,8 @@ yay -Syu $(tr "\n" " " < aurpackages)
 flatpak install $(tr "\n" " " < flats)
 doas pacman -Rns $(tr "\n" " " < rmpackages)
 doas pacman -Syu doas-sudo-shim
-doas grub-mkconfig -o /boot/grub/grub.cfg
 doas usermod --shell /bin/zsh "$USER"
+doas systemctl enable sddm.service
 echo "After this you'll be asked what version to downgrade bluez too, if you want bluetooth to work use 5.68, press any key to continue"
 #intentional dummy and -r doesn't matter because the var is never used
 # shellcheck disable=SC2034,SC2162
@@ -46,7 +46,7 @@ doas cp "$(realpath lock.png)" /usr/share/sddm/themes/simplicity/lock.png
 rm lock.png
 doas ln -sf "$(pwd)"/sddm.conf /etc/sddm.conf
 mkdir -p "$HOME"/.config/pipewire
-cp /usr/share/pipewire/pipewire.conf .config/pipewire/pipewire.conf
+cp /usr/share/pipewire/pipewire.conf "$HOME"/.config/pipewire/pipewire.conf
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ln -sf "$(realpath .zshrc)" "$HOME"/.zshrc
 curl https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/ed9693db2f8ab064b70eb8932d067c1e0bab4a85/gruvbox.zsh-theme > ~/.oh-my-zsh/custom/themes/gruvbox.zsh-theme
