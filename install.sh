@@ -51,7 +51,7 @@ ln -sf "$(realpath lf/kitty_clean)" "$HOME"/.config/lf/kitty_clean
 ln -sf "$(realpath lf/kitty_preview)" "$HOME"/.config/lf/kitty_preview
 cp -r "$(realpath kitty-pistol-previewer/vidthumb)" "$HOME"/.config/lf/vidthumb
 doas mkdir -p /usr/share/sddm/themes/simplicity
-doas cp -r "$(realpath simplicity-sddm-theme/simplicity)" /usr/share/sddm/themes/simplicity
+doas cp -r "$(realpath simplicity-sddm-theme/simplicity)" /usr/share/sddm/themes/
 doas cp "$(realpath sddm-theme.conf)" /usr/share/sddm/themes/simplicity/theme.conf
 curl https://i.redd.it/u4ke5ih893x61.png > lock.png
 doas cp "$(realpath lock.png)" /usr/share/sddm/themes/simplicity/lock.png

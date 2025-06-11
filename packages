@@ -45,6 +45,7 @@ pipewire-jack
 pipewire-zeroconf
 polkit-kde-agent
 python-distutils-extra
+qt5-quickcontrols2
 qt5-wayland
 qt6ct-kde
 qt6-wayland
