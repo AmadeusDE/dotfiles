@@ -17,7 +17,7 @@ doas pacman -Rns $(tr "\n" " " < rmpackages)
 doas pacman -Syu doas-sudo-shim
 doas usermod --shell /bin/zsh "$USER"
 systemctl --use  enable pipewire pipewire-pulse wireplumber
-doas systemctl enable sddm.service
+doas systemctl enable sddm bluetooth
 echo "After this you'll be asked what version to downgrade bluez too, if you want bluetooth to work use 5.68, press any key to continue"
 #intentional dummy and -r doesn't matter because the var is never used
 # shellcheck disable=SC2034,SC2162
@@ -28,12 +28,16 @@ while [ $(pacman -Qtdg) ]; do pacman -Qtdq | xargs doas pacman -Rns --noconfirm;
 doas pacman -Scc
 mkdir -p "$HOME"/.dotfiles/
 ln -sf "$(realpath wallpaper.sh)" "$HOME"/.dotfiles/wallpaper.sh
-ln -sf "$(realpath screenshot.sh)" "$HOME"/.dotfiles/screenshot.sh
-ln -sf "$(realpath selectshot.sh)" "$HOME"/.dotfiles/selectshot.sh
-ln -sf "$(realpath windowshot.sh)" "$HOME"/.dotfiles/windowshot.sh
+go build screenshot.go util.go
+ln -sf "$(realpath screenshot)" "$HOME"/.dotfiles/screenshot
+go build help.go util.go gemini.go
+ln -sf "$(realpath help)" "$HOME"/.dotfiles/help
+touch tokens.json
+ln -sf "$(realpath tokens.json)" "$HOME"/.dotfiles/tokens.json
 ln -sf "$(realpath autostart.conf)" "$HOME"/.dotfiles/autostart.conf
 ln -sf "$(realpath hypridle.conf)" "$HOME"/.dotfiles/hypridle.conf
 ln -sf "$(realpath vars.conf)" "$HOME"/.dotfiles/vars.conf
+ln -sf "$(realpath .Xresources)" "$HOME"/.Xresources
 mkdir -p "$HOME"/.config/hypr
 ln -sf "$(realpath hyprland.conf)" "$HOME"/.config/hypr/hyprland.conf
 ln -sf "$(realpath hyprlock.conf)" "$HOME"/.config/hypr/hyprlock.conf
@@ -41,6 +45,8 @@ mkdir -p "$HOME"/.config/kitty
 ln -sf "$(realpath kitty.conf)" "$HOME"/.config/kitty/kitty.conf
 mkdir -p "$HOME"/.config/conky
 ln -sf "$(realpath conky.conf)" "$HOME"/.config/conky/conky.conf
+mkdir -p "$HOME"/.config/swappy
+ln -sf "$(realpath swappy.conf)" "$HOME"/.config/swappy/config
 mkdir -p "$HOME"/.config/btop
 ln -sf "$(realpath btop.conf)" "$HOME"/.config/btop/btop.conf
 mkdir -p "$HOME"/.config/fastfetch

@@ -1,5 +1,6 @@
 bluez
 bluez-libs
+btop
 conky
 curl
 dash
@@ -8,12 +9,13 @@ discover
 doas
 dolphin
 downgrade
-dunst
 fastfetch
 ffmpegthumbnailer
 flatpak
 gamescope
+go
 grim
+htop
 hypridle
 hyprland
 hyprlock
@@ -31,6 +33,7 @@ linux-zen
 linux-zen-headers
 lutris
 mandoc
+mangohud
 micro
 mpvpaper
 nerd-fonts
@@ -51,11 +54,12 @@ qt6ct-kde
 qt6-wayland
 sddm
 shellcheck
-slurp
+steam
 swappy
 thefuck
 tldr
 vesktop
+v4l2loopback-dkms
 vscodium
 wireplumber
 wlrobs-hg

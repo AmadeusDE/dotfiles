@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH=$HOME/.dotfiles:$PATH
 fastfetch
 
 eval "$(jump shell zsh --bind=z)"
@@ -126,11 +127,11 @@ function ls {
 }
 
 function lc {
-  /bin/g -A --hide-git-ignore $*
+  /bin/g -A $*
 }
 
 function l1 {
-  /bin/g -1 -A --hide-git-ignore $*
+  /bin/g -1 -A $*
 }
 
 function tree {
