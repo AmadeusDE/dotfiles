@@ -1,1 +1,37 @@
+ollama install and service if it doesn't kill ram too much, figure out a decent local model to run
+move ai stuff from gemini to a system that distributes it between that or ollamafarm so that i don't have to be google dependent
+ai assistant with memory as well as an auto loader for man/tldr/--help into it, as well as a command to run to load pdfs/txts
 fix artixisms specifically in hyprland.conf, prehaps also compare to a default hyprland.conf to help deal with options
+fix initisms accross the board, this may require some dynamic modification based on if the user is on systemd/openrc which may require
+    prs into hyprland or dynamically deploying different configs to different locations depending on the system
+make my own version of pacapt in golang, needs to support flathub, yay, paru(yuck), aureate, pacman, apt(for use in distrobox compat containers)
+    pkg tools from openbsd, winget, and choco as backends, but it also needs to support pacman, apt, as syntaxical frontends
+hook up mpd and use github.com/fhs/gompd + github.com/thiagokokada/hyprland-go to wire up integration use cantata and pms as clients
+get core util modularization started, get toybox, busybox, sbase, ubase, 9base, building symlink packages for each binary, and then make a
+    coreutils replacement package that depends on all of those, then later get plan9port, coreutils and the rust varients building as separate packages
+    also attempt to do the same for github.com/dcantrell/bsdutils and github.com/leahneukirchen/obase, github.com/leahneukirchen/outils
+    which in the case of obase, may require a fork to build and delete the overlap with outils, github.com/leahneukirchen/leahutils is also
+    interesting but doesn't provide anything standard coreutils does, also use github.com/jcmdln/cugo and github.com/u-root/u-root to start
+    a golang core utils box similar to toybox, it's probably not going to be used for defaults but having it there for golang programmers
+    and the ability to become better than the alternatives is nice
+start working on generifying the shell related stuff, move to github.com/justjanne/powerline-go and try to rework the major plugins i use into that
+    or into standalone golang programs, the target would be getting a mostly equivalent shell for anyone using pdksh, bash, or zsh, but any support
+    for busybox ash, freebsd ash, toysh, powershell, fish and dash would be welcome
+rework as many command line calls into go natives as possible, this may include a fork of samurai select that merges screenshot.go, and eventually
+    rewriting install.sh in go
+ideally i'd kill hard dependence on stuff like walker but walker has so many features i'd have to recreate on wofi and co that this is a stretch goal
+add a user choice to do hyprnotify vs dunst, as well as potentionally a tiramisu+wayherb option
+fork hyprnotify and fix icons and audio
+figure out how to automate downgrade selecting the right version, may need to pr stuff into it potentionallys
+    that or make the golang port of install.sh download from the arch linux package archive and install manually as well as add the package
+    ignores, see if i can automate pull the version of bluez steamos is currently using so i don't have to manually verify good versions
+add a bar, that only appears on hover and has basic info, i typically run barless, because the screen realestate is not worth it
+    doing a autohiding bar like kde or windows can would fix this issue, but atlas there's one in existance, it would be possible with quickshell
+    however QML is garbage and quickshell doesn't have many features to faciliate it, so it would be basically coding it from scratch in markup
+    which is gross, prehaps necessitates writing a bar from scratch in golang or something, though implementing all the other features quickshell
+    has would be hell, so i really can't think of a good way to do this
+add an option to install.go for choice of admin runner, default to doas+doas-sudo-shim still, but add options for run0, sudo, and sudo-rs
+figure out how to minimize lib32 usage, honestly i can't really do much more over steam, maybe i should containerize steam but it feels like
+    it should be a system level package, plus i basically wouldn't want proton touching the containerized lib32 either, maybe i should start
+    with modifying/configuring lutris/heroic to work properly without lib32, then i could either work on my own steam launcher using my own tooling
+    or hope i can get someone to contact valve and fix the steam client

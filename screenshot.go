@@ -3,16 +3,16 @@ package main
 import (
 	"bytes"
 	"crypto/sha1"
-	"fmt"
 	"flag"
+	"fmt"
+	"image/png"
 	"io"
 	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"time"
-	"image/png"
 	"strconv"
+	"time"
 
 	"github.com/kolesa-team/go-webp/encoder"
 	"github.com/kolesa-team/go-webp/webp"
@@ -28,19 +28,19 @@ const (
 )
 
 var (
-	title string
+	title                string
 	titleScreenshotsPath string
 
 	c *hyprland.RequestClient
 )
 
-func fileEror(str, file string, err error){
+func fileEror(str, file string, err error) {
 	if err != nil {
 		log.Fatalf(str+" %s: %v", file, err)
 	}
 }
 
-func copy(srcFile, dstFile string){
+func copy(srcFile, dstFile string) {
 	src, err := os.Open(srcFile)
 	fileEror("Error opening", srcFile, err)
 	defer src.Close()
@@ -80,7 +80,7 @@ func main() {
 	copy(swappyTmpFile, swappyTmpFile2)
 
 	grimCmd := exec.Command("grim", "-")
-	if *bselect || *bwindow{
+	if *bselect || *bwindow {
 		samuraiCmd := exec.Command("samurai-select")
 		if *bwindow {
 			samuraiCmd = exec.Command("samurai-select", "-r", "hyprland")
@@ -104,16 +104,16 @@ func main() {
 			fmt.Printf("Error getting hyprland active window: %v", err)
 			return
 		}
-		start := strconv.Itoa(activeWindow.At[0])+","+strconv.Itoa(activeWindow.At[1])
-		size := strconv.Itoa(activeWindow.Size[0])+"x"+strconv.Itoa(activeWindow.Size[1])
+		start := strconv.Itoa(activeWindow.At[0]) + "," + strconv.Itoa(activeWindow.At[1])
+		size := strconv.Itoa(activeWindow.Size[0]) + "x" + strconv.Itoa(activeWindow.Size[1])
 		title = activeWindow.Title
 
-		titleScreenshotsPath = filepath.Join(fullScreenshotsPath,"/"+title)
+		titleScreenshotsPath = filepath.Join(fullScreenshotsPath, "/"+title)
 		if _, err := os.Stat(titleScreenshotsPath); os.IsNotExist(err) {
 			err = os.MkdirAll(titleScreenshotsPath, 0755)
 			eror("Error creating screenshots directory", err)
 		}
-	
+
 		grimCmd = exec.Command("grim", "-g", start+" "+size, "-")
 	}
 	swappyCmd := exec.Command("swappy", "-f", "-")
@@ -154,9 +154,9 @@ func main() {
 		saveName := ""
 		var err error
 		if *bactive {
-			saveName, err = dialog.File().Title("Save your file").Filter("Webp files", "webp").SetStartDir(titleScreenshotsPath).SetStartFile(tmpName+".webp").Save()
+			saveName, err = dialog.File().Title("Save your file").Filter("Webp files", "webp").SetStartDir(titleScreenshotsPath).SetStartFile(tmpName + ".webp").Save()
 		} else {
-			saveName, err = dialog.File().Title("Save your file").Filter("Webp files", "webp").SetStartDir(fullScreenshotsPath).SetStartFile(tmpName+".webp").Save()
+			saveName, err = dialog.File().Title("Save your file").Filter("Webp files", "webp").SetStartDir(fullScreenshotsPath).SetStartFile(tmpName + ".webp").Save()
 		}
 		if err != nil {
 			if err == dialog.Cancelled {
